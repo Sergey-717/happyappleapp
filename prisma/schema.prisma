@@ -1,0 +1,126 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// model Category {
+//   name        String
+//   id          String     @id @unique
+//   image       String
+//   description String?
+//   Model    Model[]
+// }
+
+// model Model {
+//   name        String
+//   id          String     @id @unique
+//   image       String
+//   description String?
+//   modelCategoryId String
+//   category          Category @relation(fields: [modelCategoryId], references: [id])
+//   Products    Products[]
+// }
+
+// model Products {
+//   id                String   @id @unique
+//   name              String
+//   productModelId String
+//   price             Int
+//   new               Boolean  @default(false)
+//   memory            String
+//   color             String?
+//   description       String
+//   image             String
+//   model          Model @relation(fields: [productModelId], references: [id])
+// }
+
+model Categories {
+  id String @id @unique
+  name String
+  image       String
+  description String?
+  model   Model[]
+}
+
+model Model {
+  name        String
+  id          String    @id @unique
+  image       String?
+  description String?
+  categoryId String
+  categories          Categories @relation(fields: [categoryId], references: [id])
+  products  Products[]
+  modelAvailibleCharacteristics ModelAvailibleCharacteristics[]
+  modelAvailibleValues ModelAvailibleValues[]
+  
+}
+
+model Products {
+  id                String   @id @unique
+  name              String
+  modelId           String
+  model             Model @relation(fields: [modelId], references: [id])
+  price             Int
+  new               Boolean  @default(false)
+  description       String?
+  image             String
+  productCharacteristicValues ProductCharacteristicValues[]
+}
+
+
+model Characteristics {
+  id          String     @id @unique @default(cuid())
+  name        String
+  characteristicAvailibleValues CharacteristicAvailibleValues[]
+    productCharacteristicValues ProductCharacteristicValues[]
+  modelAvailibleCharacteristics ModelAvailibleCharacteristics[]
+  modelAvailibleValues ModelAvailibleValues[]
+}
+
+model Values {
+  id          String     @id @unique @default(cuid())
+  name        String
+  characteristicAvailibleValues CharacteristicAvailibleValues[]
+  productCharacteristicValues ProductCharacteristicValues[]
+  modelAvailibleValues ModelAvailibleValues[]
+}
+
+model ModelAvailibleCharacteristics {
+  id              String     @id @unique @default(cuid())
+  modelId         String
+  model           Model @relation(fields: [modelId], references: [id])
+ characteristicId         String
+  characteristic           Characteristics @relation(fields: [characteristicId], references: [id])
+}
+
+model CharacteristicAvailibleValues {
+  id String     @id @unique @default(cuid())
+  characteristicId    String
+  characteristic           Characteristics @relation(fields: [characteristicId], references: [id])
+  valueId         String
+  value           Values @relation(fields: [valueId], references: [id])
+}
+
+model ModelAvailibleValues {
+  id String     @id @unique @default(cuid())
+  characteristicId    String
+  characteristic           Characteristics @relation(fields: [characteristicId], references: [id])
+  valueId         String
+  value           Values @relation(fields: [valueId], references: [id])
+  modelId         String
+  model           Model @relation(fields: [modelId], references: [id])
+}
+
+model ProductCharacteristicValues {
+  id  String     @id @unique @default(uuid())
+  productId String
+  products           Products @relation(fields: [productId], references: [id])
+  characteristicId String
+  characteristic           Characteristics @relation(fields: [characteristicId], references: [id])
+  valueId     String
+  value           Values @relation(fields: [valueId], references: [id])
+}

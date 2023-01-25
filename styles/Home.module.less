@@ -1,0 +1,76 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  &__header {
+    height: 200px;
+    background-image: url(/header.png);
+    color: white;
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    &__logo {
+      margin: auto;
+      text-align: center;
+    }
+    &__happy {
+      margin: auto;
+      text-align: center;
+    }
+  }
+  &__main {
+    flex: 1;
+    background-color: #f6f6f6;
+    padding: 10px 20px;
+    min-height: 100vh;
+  }
+  &__footer {
+    background-color: #231f20;
+    color: #a6a5a5;
+  }
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-gap: 16px;
+
+  &__card {
+    background-color: white;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    height: 300px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px -10px white;
+    transition: 0.3s;
+
+    &__all {
+      background-image: url("/all.png");
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+    }
+
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+  &__new {
+    border: 1px solid lightgreen;
+  }
+  &__card__id {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 8px;
+  }
+}
+
+.filtres {
+  display: grid;
+}
+
+.all {
+  margin: 16px 0;
+}
