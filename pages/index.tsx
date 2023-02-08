@@ -4,7 +4,6 @@ import prisma from "../lib/prisma";
 import { GetStaticProps } from "next";
 import { Categories, Products } from "@prisma/client";
 import { CardOfProduct } from "../components/CardOfProduct";
-import Link from "next/link";
 
 export default function Home({
   categories,
@@ -16,15 +15,20 @@ export default function Home({
   return (
     <>
       {/* {console.log(categories)} */}
-      {/* {console.log(products)} */}
 
       <MainComponent>
         <div className={styles.products}>
-          {categories.map((i) => {
-            return (
-              <CardOfProduct product={i} counter={1} key={i.id}></CardOfProduct>
-            );
-          })}
+          {categories
+            .filter((x) => x.counter)
+            .map((i) => {
+              return (
+                <CardOfProduct
+                  product={i}
+                  counter={i.counter}
+                  key={i.id}
+                ></CardOfProduct>
+              );
+            })}
         </div>
       </MainComponent>
     </>
@@ -35,58 +39,41 @@ export const getStaticProps: GetStaticProps = async () => {
   //  Model create
   // await prisma.model.create({
   //   data: {
-  //     name: "iPhone 13 Pro Max",
-  //     id: "iphone-13-pro-max",
-  //     categoryId: "iphone",
-  //     description: "",
+  //     name: "Watch 3",
+  //     id: "watch-3",
+  //     categoryId: "watch",
+  //     description: "Watch 3",
   //     image: "/hA2.jpg",
   //   },
   // });
 
   //  Characteristics create
-  // await prisma.characteristics
-  //   .create({
-  //     data: {
-  //       name: "color",
-  //     },
-  //   })
+  // await prisma.characteristics.create({
+  //   data: {
+  //     name: "Размер",
+  //     id: "size"
+  //   },
+  // });
 
   // ModelAvailibleCharacteristics create
   // await prisma.modelAvailibleCharacteristics.createMany({
   //   data: [
   //     {
-  //       modelId: "iphone-13-pro-max",
-  //       characteristicId: "memory",
+  //       modelId: "watch-3",
+  //       characteristicId: "size",
   //     },
   //     {
-  //       modelId: "iphone-13-pro-max",
+  //       modelId: "watch-3",
   //       characteristicId: "color",
   //     },
   //   ],
   // });
 
   // Values create
-  // await prisma.values.createMany({
-  //   data: [
-  //     {
-  //       name: "Graphite",
-  //     },
-  //     {
-  //       name: "Sierra Blue",
-  //     },
-  //     {
-  //       name: "Alpine Green",
-  //     },
-  //     {
-  //       name: "Pink",
-  //     },
-  //     {
-  //       name: "Blue",
-  //     },
-  //     {
-  //       name: "Purple",
-  //     },
-  //   ],
+  // await prisma.values.create({
+  //   data: {
+  //     name: "42mm",
+  //   },
   // });
 
   //  CharacteristicAvailibleValues create
@@ -100,23 +87,20 @@ export const getStaticProps: GetStaticProps = async () => {
   //       characteristicId: "color",
   //       valueId: "cld8g9mhh0006u0dqvuolcvqt",
   //     },
-  //     {
-  //       characteristicId: "color",
-  //       valueId: "cld8g9mhh0007u0dqc2ljixuv",
-  //     },
+  //
   //   ],
   // });
 
   // Product create
   // await prisma.products.create({
   //   data: {
-  //     name: "iPhone 13 Pro Max",
-  //     modelId: "iphone-13-pro-max",
-  //     price: 69990,
-  //     id: "iphone-13-pro-max-256gb-alpinegreen",
-  //     description: "Отличное состояние, полный комплект, новая АКБ 100%",
-  //     new: false,
-  //     image: "/iphones/iphone-13-pro-max-green.jpg",
+  //     name: "Watch 3",
+  //     modelId: "watch-3",
+  //     price: 16100,
+  //     id: "watch-3-42mm-silver",
+  //     description: "Новые запечатанные часы, 1 год гарантии",
+  //     new: true,
+  //     image: "",
   //   },
   // });
 
@@ -124,14 +108,14 @@ export const getStaticProps: GetStaticProps = async () => {
   // await prisma.productCharacteristicValues.createMany({
   //   data: [
   //     {
-  //       productId: "iphone-13-pro-max-256gb-alpinegreen",
-  //       valueId: "cld8n8fty000gu0eg8ddlmxma",
+  //       productId: "watch-3-42mm-silver",
+  //       valueId: "cld8g9mhh0005u0dqxscijgff",
   //       characteristicId: "color",
   //     },
   //     {
-  //       productId: "iphone-13-pro-max-256gb-alpinegreen",
-  //       valueId: "cld8mqcc60009u0eg61wkkqwq",
-  //       characteristicId: "memory",
+  //       productId: "watch-3-42mm-silver",
+  //       valueId: "cldd1zrql000iu0ecfc0ckzgb",
+  //       characteristicId: "size",
   //     },
   //   ],
   // });
@@ -140,29 +124,14 @@ export const getStaticProps: GetStaticProps = async () => {
   // await prisma.modelAvailibleValues.createMany({
   //   data: [
   //     {
-  //       modelId: "iphone-14-pro-max",
-  //       valueId: "cld31ewhg0006u0054niikdq4",
-  //       characteristicId: "color",
-  //     },
-  //     {
-  //       modelId: "iphone-14-pro-max",
-  //       valueId: "cld8g9mhh0007u0dqc2ljixuv",
-  //       characteristicId: "color",
-  //     },
-  //     {
-  //       modelId: "iphone-14-pro-max",
+  //       modelId: "watch-3",
   //       valueId: "cld8g9mhh0005u0dqxscijgff",
   //       characteristicId: "color",
   //     },
   //     {
-  //       modelId: "iphone-14-pro-max",
-  //       valueId: "cld2ypqd10000u0qqo1rvjm15",
-  //       characteristicId: "memory",
-  //     },
-  //     {
-  //       modelId: "iphone-14-pro-max",
-  //       valueId: "cld2ypqd10000u0qqo1rvjm14",
-  //       characteristicId: "memory",
+  //       modelId: "watch-3",
+  //       valueId: "cldd1zrql000iu0ecfc0ckzgb",
+  //       characteristicId: "size",
   //     },
   //   ],
   // });
@@ -184,17 +153,17 @@ export const getStaticProps: GetStaticProps = async () => {
   // ModelAvailibleValues color: "cld31p7ft000bu00533tasslx"
   // ProductCharacteristicValues color: "aaa85d5c"-ab2a-4944-ac9f-e65fd435e95e
 
-  const categories = await prisma.categories.findMany();
-  const products = await prisma.products.findMany();
+  const categories = await prisma.$queryRaw`
+SELECT "Categories".*,
+COUNT("Products".id)::int as counter
+FROM "Categories"
+LEFT JOIN "Model" ON "Model"."categoryId"="Categories".id
+LEFT JOIN "Products" ON "Products"."modelId"="Model".id
+GROUP BY "Categories".id
+  
+`;
 
-  // const countedCategories = categories.map((category: Categories) => {
-  //   return {
-  //     ...category,
-  //     count: products.filter(
-  //       (product: Products) => product.modelId === category.id
-  //     ).length,
-  //   };
-  // });
+  const products = await prisma.products.findMany();
 
   return {
     props: { categories, products },

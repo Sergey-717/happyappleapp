@@ -67,8 +67,26 @@
   }
 }
 
-.filtres {
+.list {
   display: grid;
+  grid-template-columns: 2fr 7fr;
+  &__filters {
+    margin: 10px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px -10px white;
+    &__block {
+      display: flex;
+      flex-direction: column;
+      padding: 10px 0;
+      grid-gap: 6px;
+      h3 {
+        color: #717171;
+        margin: 4px;
+      }
+    }
+  }
 }
 
 .all {
