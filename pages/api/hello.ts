@@ -9,7 +9,7 @@ export function getTabelNameByKey(key: string): string {
     case "modelId":
       return `"Model".id`;
     case "valueId":
-      return `"Values".id`;
+      return `"ProductCharacteristicValues"."valueId"`;
     default:
       return ``;
   }
@@ -45,8 +45,6 @@ export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
     JOIN "Model" ON "Products"."modelId"="Model".id
     JOIN "Categories" ON "Categories".id="Model"."categoryId"
     JOIN "ProductCharacteristicValues" ON "Products".id="ProductCharacteristicValues"."productId"
-    JOIN "Values" ON "Values".id="ProductCharacteristicValues"."valueId"
-    JOIN "Characteristics" ON "Characteristics".id="ProductCharacteristicValues"."characteristicId"
     ${whereIn} ${orderBy}
   `)
   );

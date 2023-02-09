@@ -16,7 +16,7 @@ export default function Home({
     <>
       {/* {console.log(categories)} */}
 
-      <MainComponent>
+      <MainComponent category={categories}>
         <div className={styles.products}>
           {categories
             .filter((x) => x.counter)

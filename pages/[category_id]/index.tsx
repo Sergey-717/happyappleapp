@@ -9,6 +9,7 @@ import { Tooltip, Button, Text, Radio } from "@nextui-org/react";
 import { Dropdown } from "@nextui-org/react";
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
+import { ProductNotFound } from "../../components/ProductNotFound";
 
 interface FilterModel {
   [key: string]: {
@@ -164,7 +165,7 @@ export default function ({
         </div>
         <div>
           <div className={styles.products}>
-            {(!filteredProducts.length && "123456789") ||
+            {(!filteredProducts.length && <ProductNotFound />) ||
               filteredProducts.map((i) => {
                 return (
                   <Link href={`/${query.category_id}/${i.id}`} key={i.id}>
@@ -187,12 +188,13 @@ export default function ({
                         >
                           {i.name}
                         </Text>
-
-                        {characteristics[i.id].map(
-                          (char: { name: string; value: string }) => (
-                            <h3 key={char.name}>{char.value}</h3>
-                          )
-                        )}
+                        <div className={styles.products__card__characteristics}>
+                          {characteristics[i.id].map(
+                            (char: { name: string; value: string }) => (
+                              <h3 key={char.name}>{char.value}</h3>
+                            )
+                          )}
+                        </div>
                         <h3>{i.price} ₽</h3>
                       </div>
                       <div className="products__card__img">
@@ -207,16 +209,7 @@ export default function ({
                           `}
                         </style>
                       </div>
-                      <Tooltip
-                        css={{ p: "$10" }}
-                        content={i.description}
-                        color="secondary"
-                        placement="topStart"
-                      >
-                        <Button auto color="secondary" flat>
-                          Описание
-                        </Button>
-                      </Tooltip>
+                      
                     </fieldset>
                   </Link>
                 );

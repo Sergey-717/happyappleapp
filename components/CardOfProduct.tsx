@@ -1,5 +1,5 @@
 import styles from "../styles/Home.module.less";
-import Image from "next/image";
+import { Button } from "@nextui-org/react";
 import Link from "next/link";
 import { Categories, Products } from "@prisma/client";
 
@@ -15,7 +15,9 @@ export const CardOfProduct = ({ product, counter }: ICardOfProductProps) => {
         <div className={styles.products__card__text}>
           <h2>{product.name}</h2>
           <p>Товаров: {counter}</p>
-          <p style={{ color: "blue" }}>Смотреть модели </p>
+          <Button color="secondary" style={{ opacity: 0.8 }}>
+            Смотреть модели{" "}
+          </Button>
         </div>
         <div className="products__card__img">
           <style jsx>
