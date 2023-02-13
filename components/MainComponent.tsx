@@ -100,9 +100,7 @@ export const MainComponent = (props: any) => {
         </div>
       </div>
       <div className={styles.app__main}>{props.children}</div>
-      <div className={styles.app__footer}>
-        <Footer />
-      </div>
+      <Footer />
     </>
   );
 };

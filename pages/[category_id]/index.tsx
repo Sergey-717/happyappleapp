@@ -164,18 +164,20 @@ export default function ({
           </div>
         </div>
         <div>
-          <div className={styles.products}>
-            {(!filteredProducts.length && <ProductNotFound />) ||
-              filteredProducts.map((i) => {
+          {(!filteredProducts.length && <ProductNotFound />) || (
+            <div className={styles.products}>
+              {filteredProducts.map((i) => {
                 return (
                   <Link href={`/${query.category_id}/${i.id}`} key={i.id}>
-                    <fieldset
+                    <div
                       className={`${styles.products__card} ${
-                        i.new && styles.products__new
+                        i.new && styles.products__card__new
                       }`}
                       key={i.id}
                     >
-                      <legend>{i.new ? "NEW!" : "used"}</legend>
+                      <div className={styles.products__card__newStyle}>
+                        {i.new ? "NEW!" : ""}
+                      </div>
                       <div className={styles.products__card__text}>
                         <Text
                           h2
@@ -195,26 +197,32 @@ export default function ({
                             )
                           )}
                         </div>
-                        <h3>{i.price} ₽</h3>
+                        <h4>{i.price} Rub</h4>
                       </div>
                       <div className="products__card__img">
                         <style jsx>
                           {`
                             .products__card__img {
+                              height: 100%;
                               background-image: url(${i.image});
                               background-repeat: no-repeat;
                               background-size: contain;
                               background-position: center;
+                              transition: 0.5s;
+                              z-index: 1;
+                            }
+                            .products__card__img:hover {
+                              transform: translateY(-60px);
                             }
                           `}
                         </style>
                       </div>
-                      
-                    </fieldset>
+                    </div>
                   </Link>
                 );
               })}
-          </div>
+            </div>
+          )}
         </div>
       </div>
     </MainComponent>

@@ -11,13 +11,11 @@ export default function Product({
   product: Products;
   characteristics: { name: string; value: string }[];
 }) {
-  // const prod = new Map(product);
   return (
     <>
-      {/* {console.log(...product)} */}
       <MainComponent>
         <div className={`${styles.products__card__id}`}>
-          <div>
+          <div className={`${styles.products__card__id__phone}`}>
             <img
               src={`${product.image}`}
               alt={product.modelId}
@@ -26,7 +24,7 @@ export default function Product({
           </div>
           <div>
             <h1>
-              {product.name}{" "}
+              {product.name}
               {product.new && (
                 <FiberNewIcon style={{ fontSize: "50px" }} color="success" />
               )}

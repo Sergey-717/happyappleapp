@@ -23,10 +23,6 @@
       height: 100px;
       backdrop-filter: blur(10px);
     }
-    &__logo,
-    &__happy {
-      transition: 0.5s;
-    }
     &_main {
       width: 100%;
       height: 100%;
@@ -81,54 +77,81 @@
     padding: 10px 20px;
     min-height: 100vh;
   }
-  &__footer {
-    background-color: #231f20;
-    color: #a6a5a5;
-  }
 }
 
 .products {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 0.5fr));
   grid-gap: 16px;
+  margin-top: 10px;
 
-  &__card {
+  &__mainCard {
     background-color: white;
     padding: 10px;
     display: grid;
-    grid-template-columns: 2fr 3fr;
+    grid-template-columns: 2fr 4fr;
     height: 300px;
     border-radius: 8px;
     box-shadow: 0 0 15px -10px white;
     transition: 0.3s;
     &__text {
       font-family: "Orion", sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      grid-gap: 8px;
+    }
+
+    &:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 20px -10px grey;
+    }
+  }
+  &__card {
+    background-color: white;
+    padding: 10px;
+    height: 300px;
+    border-radius: 8px;
+    transition: 0.3s;
+    overflow: hidden;
+    position: relative;
+    &__text {
+      font-family: "Orion", sans-serif;
+      position: relative;
+      z-index: 10;
     }
     &__characteristics {
       color: grey;
       display: flex;
       grid-gap: 8px;
-    }
-    &__all {
-      background-image: url("/all.png");
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-position: center;
+      position: relative;
+      z-index: 10;
+      text-shadow: 1px 1px 2px rgb(255, 255, 255);
     }
 
     &:hover {
       transform: scale(1.02);
+      box-shadow: 0 0 20px -10px grey;
     }
-  }
-  &__new {
-    border: 1px solid lightgreen;
-  }
-  &__card__id {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    border-radius: 8px;
+
+    &__newStyle {
+      position: absolute;
+      top: 5%;
+      right: 5%;
+      font-family: "Orbitron", sans-serif;
+      color: lightgreen;
+      font-weight: bolder;
+      z-index: 10;
+      transition: 1s;
+    }
+    &__id {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: white;
+      border-radius: 8px;
+      overflow: hidden;
+    }
   }
 }
 
@@ -141,6 +164,8 @@
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 0 15px -10px white;
+    font-family: "Orion", sans-serif;
+    font-weight: lighter;
     &__block {
       display: flex;
       flex-direction: column;
@@ -161,7 +186,114 @@
 .productNotFound {
   margin-top: 25%;
   text-align: center;
+  height: 70vh;
+  background-image: url("/all.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
 .all {
   margin: 16px 0;
+}
+
+.footer {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  &__links {
+    display: flex;
+    flex-direction: column;
+    &__button {
+      cursor: pointer;
+      background-color: #ffffff;
+      border-radius: 8px;
+      margin: 10px;
+      padding: 6px;
+      transition: 0.3s;
+      display: flex;
+      grid-gap: 6px;
+      align-items: center;
+      justify-content: space-around;
+      opacity: 0.7;
+      &:hover {
+        transform: scale(1.09);
+        box-shadow: 0 0 20px -10px grey;
+        opacity: 1;
+      }
+    }
+    &__info {
+      background-color: #ffffff;
+      border-radius: 8px;
+      margin: 10px;
+      padding: 6px;
+      text-align: center;
+    }
+  }
+  &__text {
+    background-color: #ffffff;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 10px;
+    &__collapse {
+      transition: 0.3s;
+      &:hover {
+        scale: 1.03;
+      }
+    }
+  }
+}
+
+.login {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f6f6f6;
+
+  &_form {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 16px;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 20px -10px grey;
+  }
+}
+
+@media (max-width: 720px) {
+  .list {
+    grid-template-columns: 1fr;
+  }
+  .products {
+    grid-template-columns: 1fr;
+    &__card__id {
+      flex-direction: column;
+      &__phone {
+        max-width: 80vw;
+      }
+    }
+  }
+  .app {
+    &__header {
+      height: 100px;
+
+      &_main {
+        display: none;
+      }
+      &_blur {
+        transform: translateY(0px);
+        opacity: 1;
+      }
+      &__links {
+        display: none;
+      }
+    }
+    &__main {
+      margin-top: 100px;
+    }
+  }
+  .footer {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 }

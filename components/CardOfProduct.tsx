@@ -11,18 +11,18 @@ interface ICardOfProductProps {
 export const CardOfProduct = ({ product, counter }: ICardOfProductProps) => {
   return (
     <>
-      <Link className={styles.products__card} href={`/${product.id}`}>
-        <div className={styles.products__card__text}>
+      <Link className={styles.products__mainCard} href={`/${product.id}`}>
+        <div className={styles.products__mainCard__text}>
           <h2>{product.name}</h2>
           <p>Товаров: {counter}</p>
-          <Button color="secondary" style={{ opacity: 0.8 }}>
-            Смотреть модели{" "}
+          <Button color="secondary" style={{ opacity: 0.8, width: "80%" }}>
+            Смотреть модели
           </Button>
         </div>
-        <div className="products__card__img">
+        <div className="products__mainCard__img">
           <style jsx>
             {`
-              .products__card__img {
+              .products__mainCard__img {
                 background-image: url(${product.image});
                 background-repeat: no-repeat;
                 background-size: contain;
