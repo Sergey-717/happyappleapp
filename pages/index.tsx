@@ -2,20 +2,17 @@ import styles from "../styles/Home.module.less";
 import { MainComponent } from "../components/MainComponent";
 import prisma from "../lib/prisma";
 import { GetStaticProps } from "next";
-import { Categories, Products } from "@prisma/client";
+import { Categories } from "@prisma/client";
 import { CardOfProduct } from "../components/CardOfProduct";
 
 export default function Home({
   categories,
-  products,
 }: {
   categories: Categories[];
-  products: Products[];
+  counter: number;
 }) {
   return (
     <>
-      {/* {console.log(categories)} */}
-
       <MainComponent category={categories}>
         <div className={styles.products}>
           {categories
@@ -163,10 +160,8 @@ GROUP BY "Categories".id
   
 `;
 
-  const products = await prisma.products.findMany();
-
   return {
-    props: { categories, products },
+    props: { categories },
     // revalidate: 20,
   };
 };
