@@ -8,8 +8,7 @@ import { CardOfProduct } from "../components/CardOfProduct";
 export default function Home({
   categories,
 }: {
-  categories: Categories[];
-  counter: number;
+  categories: Array<Categories & { counter: number }>;
 }) {
   return (
     <>
