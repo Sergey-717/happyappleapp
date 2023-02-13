@@ -18,8 +18,8 @@ export function getTabelNameByKey(key: string): string {
 export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
   const categoryId = req.query.categoryId;
   const filter: any = { ...req.query, categoryId: undefined } || {};
-  let whereIn: string = `WHERE "Categories".id='${categoryId}'`;
-  let orderBy: string = ``;
+  let whereIn = `WHERE "Categories".id='${categoryId}'`;
+  let orderBy = ``;
 
   Object.entries(filter).forEach(([key, value]: any) => {
     switch (key) {

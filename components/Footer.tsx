@@ -19,7 +19,7 @@ export const Footer = () => {
           href="https://wa.me/79159302244"
         >
           <WhatsAppIcon sx={{ fontSize: "70px", color: "#9c27b0" }} />
-          <h4>What's App</h4>
+          <h4>Whats App</h4>
         </Link>
         <Link
           className={styles.footer__links__button}
@@ -37,8 +37,10 @@ export const Footer = () => {
         </Link>
         <div className={styles.footer__links__info}>
           Copyright © 2017 - {new Date().getFullYear()}
-          <br /> "Happy Apple"
-          <br /> All rights reserved.
+          <br />
+          Happy Apple
+          <br />
+          All rights reserved.
         </div>
       </div>
       <div className={styles.footer__text}>

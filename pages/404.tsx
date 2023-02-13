@@ -1,6 +1,6 @@
 import { MainComponent } from "../components/MainComponent";
 
-export default function () {
+const NotFound = () => {
   return (
     <>
       <MainComponent>
@@ -8,4 +8,6 @@ export default function () {
       </MainComponent>
     </>
   );
-}
+};
+
+export default NotFound;

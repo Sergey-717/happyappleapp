@@ -18,7 +18,7 @@ interface FilterModel {
   };
 }
 
-export default function ({
+const CategoryIndex =  ({
   products,
   models,
   filterModel,
@@ -30,7 +30,7 @@ export default function ({
   filterModel: FilterModel;
   characteristics: any;
   categoryId: string;
-}) {
+}) => {
   const { query } = useRouter();
   const [filteredProducts, setFilteredProducts] = useState(products);
 
@@ -308,3 +308,6 @@ export async function getServerSideProps({ params }: { params: any }) {
     },
   };
 }
+
+
+export default CategoryIndex
