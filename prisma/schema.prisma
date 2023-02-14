@@ -7,37 +7,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// model Category {
-//   name        String
-//   id          String     @id @unique
-//   image       String
-//   description String?
-//   Model    Model[]
-// }
-
-// model Model {
-//   name        String
-//   id          String     @id @unique
-//   image       String
-//   description String?
-//   modelCategoryId String
-//   category          Category @relation(fields: [modelCategoryId], references: [id])
-//   Products    Products[]
-// }
-
-// model Products {
-//   id                String   @id @unique
-//   name              String
-//   productModelId String
-//   price             Int
-//   new               Boolean  @default(false)
-//   memory            String
-//   color             String?
-//   description       String
-//   image             String
-//   model          Model @relation(fields: [productModelId], references: [id])
-// }
-
 model Categories {
   id String @id @unique
   name String

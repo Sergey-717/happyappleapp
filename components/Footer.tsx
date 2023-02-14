@@ -1,5 +1,4 @@
 import PhoneInTalkRoundedIcon from "@mui/icons-material/PhoneInTalkRounded";
-import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import Link from "next/link";
@@ -44,45 +43,53 @@ export const Footer = () => {
         </div>
       </div>
       <div className={styles.footer__text}>
-        <Collapse.Group>
+        <Collapse.Group id="collapse">
           <Collapse
+            id="collapse1"
             title="Описание устройств"
             className={styles.footer__text__collapse}
           >
-            <Text>
+            <Text id="collapse11">
               Все устройства либо новые, либо оригинал б/у, каждое устройство с
               гарантией, это либо официальная гарантия, либо, если она
               закончилась, гарантия от меня лично!
             </Text>
           </Collapse>
           <Collapse
+            id="collapse2"
             title="Бесплатно при покупке"
             className={styles.footer__text__collapse}
           >
-            <Text>
+            <Text id="collapse21">
               К каждому телефону в подарок чехол и защитное стекло, а так же
               перенос данных и установка приложений
             </Text>
           </Collapse>
           <Collapse
+            id="collapse3"
             title="Что касается цен"
             className={styles.footer__text__collapse}
           >
-            <Text>
+            <Text id="collapse31">
               В связи с нестабильным курсом доллара, цены могут меняться.
             </Text>
           </Collapse>
           <Collapse
+            id="collapse4"
             title="Как связаться"
             className={styles.footer__text__collapse}
           >
-            <Text>
+            <Text id="collapse41">
               Для быстрой связи: Whats App, VK, только текстовые сообщения,
               аудио звонок по договоренности.
             </Text>
           </Collapse>
-          <Collapse title="Доставка" className={styles.footer__text__collapse}>
-            <Text>
+          <Collapse
+            id="collapse5"
+            title="Доставка"
+            className={styles.footer__text__collapse}
+          >
+            <Text id="collapse51">
               Доставка по НН бесплатно, Бор доставка 500₽,
               Кстово/Дзержинск/Городец доставка 1,500₽ доставка возможна, если у
               меня есть окно до Вас доехать, более дешевый вариант доставки СДЭК
@@ -92,8 +99,12 @@ export const Footer = () => {
               доедет отлично.
             </Text>
           </Collapse>
-          <Collapse title="Гарантия" className={styles.footer__text__collapse}>
-            <Text>
+          <Collapse
+            id="collapse6"
+            title="Гарантия"
+            className={styles.footer__text__collapse}
+          >
+            <Text id="collapse61">
               На НОВЫЕ iPhone НЕ РОСТЕСТ ОФИЦИАЛЬНОЙ ГАРАНТИИ НЕТУ! На
               iPad/MacBook/Watch/Airpods пока она действует! Ростест телефоны не
               поставляются в Россию с начала марта в связи с СВО, Apple
@@ -103,8 +114,12 @@ export const Footer = () => {
               за него гораздо большие деньги!
             </Text>
           </Collapse>
-          <Collapse title="Оплата" className={styles.footer__text__collapse}>
-            <Text>
+          <Collapse
+            id="collapse7"
+            title="Оплата"
+            className={styles.footer__text__collapse}
+          >
+            <Text id="collapse71">
               Оплата: -наличными -перевод на карту (Сбербанк, Альфа Банк,
               Тиньков, ВТБ) - оплата картой, через терминал (комиссия 5%) Также
               есть возможность оформить технику в кредит: (От 3 до 36 месяцев,
